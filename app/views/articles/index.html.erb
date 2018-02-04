@@ -11,6 +11,13 @@
         <div>
           <%= truncate(article.description, length: 50) %>
         </div>
+        <div>
+          <small>
+            Created by: <%= article.user&.username || 'anonymous' %>,
+            <%= time_ago_in_words(article.created_at) %> ago,
+            last updated: <%= time_ago_in_words(article.updated_at) %>
+          </small>
+        </div>
         <hr>
         <div>
           <%= link_to "Edit", edit_article_path(article), class: "btn btn-xs btn-primary" %>
