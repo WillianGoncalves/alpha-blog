@@ -1,0 +1,19 @@
+<h1 class="center">Alpha Bloggers</h1>
+
+<div class="row">
+  <% @users.each do |user| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <%= gravatar_for user %>
+        <div class="caption center">
+          <h3><%= user.username %></h3>
+          <p>
+            <%= link_to user_path(user), class: "btn btn-primary" do %>
+              <%= "Article".pluralize(user.articles.count) %> <span class="badge"><%= user.articles.count %></span>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

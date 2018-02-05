@@ -1,5 +1,10 @@
 <div class="well col-xs-8 col-xs-offset-2">
   <h3 class="center"><strong><%= @article.title %></strong></h3>
+  <div class="center">
+    <h6>Created by</h6>
+    <%= gravatar_for(@article.user) %>
+    <h5><%= link_to @article.user.username, user_path(@article.user) %></h5>
+  </div>
 
   <hr>
   <%= simple_format(@article.description) %>
