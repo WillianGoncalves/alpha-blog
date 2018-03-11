@@ -1,4 +1,11 @@
-<h1 class="center"><%= "Category: " + @category.name %></h1>
+<h1 class="center">
+  <%= @category.name %>
+  <% if logged_in? and current_user.admin? %>
+    <%= link_to edit_category_path(@category), { class: "btn btn-link", title: "Edit" } do %>
+      <span class="glyphicon glyphicon-edit"></span>
+    <% end %>
+  <% end %>
+</h1>
 
 <div class="center">
   <%= will_paginate @category_articles %>
