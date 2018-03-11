@@ -9,12 +9,19 @@
         <div>
           <%= truncate(article.description, length: 50) %>
         </div>
+        <br />
         <div>
           <small>
             Created by: <%= article.user&.username || 'anonymous' %>,
             <%= time_ago_in_words(article.created_at) %> ago,
             last updated: <%= time_ago_in_words(article.updated_at) %>
           </small>
+          <% if article.categories.any? %>
+            |
+            <div class="btn-group btn-group-xs">
+              <%= render article.categories %>
+            </div>
+          <% end %>
         </div>
         <hr>
         <% if logged_in? && ( current_user == article.user || current_user.admin?) %>

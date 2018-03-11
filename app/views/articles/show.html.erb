@@ -7,7 +7,13 @@
   </div>
 
   <hr>
-  <%= simple_format(@article.description) %>
+    <%= simple_format(@article.description) %>
+
+    <% if @article.categories.any? %>
+      <div class="btn-group btn-group-xs">
+        <%= render @article.categories %>
+      </div>
+    <% end %>
   <hr>
 
   <div>
